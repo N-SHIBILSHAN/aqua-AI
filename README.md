@@ -278,13 +278,10 @@ results = model.train(
 - [ ] SMS/Email alerts
 - [ ] Predictive maintenance
 - [ ] Offline PWA support
-- [ ] Multi-language support
-
-## 📄 License
-MIT License - see [LICENSE](LICENSE)
+- [ ] Multi-language 
 
 ## 🙏 Support
-For support, email support@aquaguard.ai or open an issue on GitHub.
+For support, email shibilshan714@gmail.com or open an issue on GitHub.
 
 ---
 
