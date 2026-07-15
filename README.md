@@ -10,7 +10,6 @@
 
 AquaGuard AI is a production-ready, AI-powered water leakage detection system. Point your mobile phone camera at pipes, walls, ceilings, water tanks, bathrooms, kitchens, or any area suspected of water leakage, and the AI will detect and analyze potential water leaks in real-time.
 
-**Live Demo:** [https://aquaguard-ai.vercel.app](https://aquaguard-ai.vercel.app) (Coming Soon)
 
 ## ✨ Features
 
