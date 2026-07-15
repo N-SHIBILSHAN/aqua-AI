@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Water animation background */
+.water-bg {
+  background: linear-gradient(
+    180deg,
+    #0c4a6e 0%,
+    #075985 25%,
+    #0e7490 50%,
+    #0891b2 75%,
+    #06b6d4 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.water-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(6, 182, 212, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(14, 165, 233, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 40% 80%, rgba(34, 211, 238, 0.2) 0%, transparent 50%);
+  animation: waterShift 8s ease-in-out infinite;
+}
+
+@keyframes waterShift {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  33% {
+    transform: scale(1.02) rotate(1deg);
+  }
+  66% {
+    transform: scale(0.98) rotate(-1deg);
+  }
+}
+
+/* Wave animation */
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,60 C200,120 400,0 600,60 C800,120 1000,0 1200,60 L1200,120 L0,120 Z' fill='rgba(6,182,212,0.1)'/%3E%3C/svg%3E");
+  animation: waveMove 8s linear infinite;
+}
+
+.wave:nth-child(2) {
+  bottom: 0;
+  animation: waveMove 6s linear infinite reverse;
+  opacity: 0.5;
+}
+
+@keyframes waveMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Card styles */
+.card {
+  @apply glass rounded-2xl p-6 transition-all duration-300;
+}
+
+.card:hover {
+  @apply shadow-lg shadow-cyan-500/10;
+  transform: translateY(-2px);
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold px-6 py-3 rounded-xl 
+         transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/25 
+         active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-secondary {
+  @apply glass text-white font-semibold px-6 py-3 rounded-xl 
+         transition-all duration-300 hover:bg-white/10 
+         active:scale-95;
+}
+
+.btn-danger {
+  @apply bg-gradient-to-r from-red-500 to-rose-600 text-white font-semibold px-6 py-3 rounded-xl 
+         transition-all duration-300 hover:shadow-lg hover:shadow-red-500/25 
+         active:scale-95;
+}
+
+/* Input styles */
+.input-field {
+  @apply w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 
+         text-white placeholder-slate-400 
+         focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent
+         transition-all duration-300;
+}
+
+/* Severity badges */
+.severity-badge {
+  @apply px-3 py-1 rounded-full text-xs font-semibold;
+}
+
+.severity-high {
+  @apply bg-red-500/20 text-red-400 border border-red-500/30;
+}
+
+.severity-medium {
+  @apply bg-orange-500/20 text-orange-400 border border-orange-500/30;
+}
+
+.severity-low {
+  @apply bg-yellow-500/20 text-yellow-400 border border-yellow-500/30;
+}
+
+.severity-info {
+  @apply bg-green-500/20 text-green-400 border border-green-500/30;
+}
+
+/* Camera viewport */
+.camera-viewport {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 2px solid rgba(6, 182, 212, 0.3);
+}
+
+.camera-viewport video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.camera-viewport canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Scan line animation */
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+  animation: scanLine 2s linear infinite;
+}
+
+@keyframes scanLine {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid rgba(6, 182, 212, 0.1);
+  border-top-color: #06b6d4;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Map styles */
+.leaflet-container {
+  height: 400px;
+  width: 100%;
+  border-radius: 16px;
+  z-index: 1;
+}
+
+/* Emoji animation */
+.emoji-float {
+  animation: emojiFloat 3s ease-in-out infinite;
+}
+
+@keyframes emojiFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(10deg);
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .camera-viewport {
+    border-radius: 12px;
+    border-width: 1px;
+  }
+  
+  .card {
+    padding: 1rem;
+  }
+}
+
+/* Dark mode overrides for Leaflet */
+.leaflet-container {
+  background: #1e293b !important;
+}
